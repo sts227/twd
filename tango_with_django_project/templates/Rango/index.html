@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{% load static %} <!--need this to load static images (as opposed to media file images-->
+
+<html>
+
+    <head>
+        <title>Rango</title>
+    </head>
+
+    <body>
+        <h1>Spencer's Theme song?  18 and Life</h1>
+        <strong>{{ boldmessage }}</strong><br />
+        <a href="/rango/about/">About</a>	<a href="/rango/contact_us/">Contact</a>	<a href="/rango/gallery/">Gallery</a><br />
+        <img src="{% static "rango.jpg" %}" alt="Picture of Rango" /> 
+    </body>
+
+</html>

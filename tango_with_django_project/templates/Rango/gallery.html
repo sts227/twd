@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+{% load static %} 
+
+<html>
+
+    <head>
+        <title>The Gallery</title>
+    </head>
+
+    <body>
+        <h1>Isn't Spencer Totes Adorb?</h1>
+        Stop it Spencer.  Just Stop it!<strong>{{ boldmessage }}</strong><br />
+        <a href="/rango/about/">About</a>	<a href="/rango/contact_us/">Contact</a>	<a href="/rango/">Home</a><br />
+        <img src="/media/sandwich.jpg" alt="Picture of Sandwich" /> 
+        <img src="/media/snooze.jpg" alt="Picture of Snooze" /> 
+        <img src="/media/yawn.jpg" alt="Picture of Yawn" /> 
+        <img src="{% static "face.jpg" %}" alt="Picture of Spencer up close" /> 
+    </body>
+
+</html>
