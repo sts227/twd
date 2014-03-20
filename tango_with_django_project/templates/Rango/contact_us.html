@@ -1,19 +1,13 @@
+{% extends 'rango/base.html' %}
 
-<!DOCTYPE html>
+{% block title %}Contact us...{% endblock %}
 
- 
-
-<html>
-
-    <head>
-        <title>Rango</title>
-    </head>
-
-    <body>
-        <h1>Contact Us...</h1>
-        <strong>Send us a Snap!</strong><br />
-        <a href="/rango/about/">About</a>	<a href="/rango/">Home</a>	<a href="/rango/gallery/">Gallery</a><br />
+{% block body_block %}
+<div class="hero-unit">
+		<h1>Contact us...</h1>
+        <h2>Send us a Snap!</h2>
         <img src="/media/snapchat.jpg" alt="snapchat receptionist" /> 
     </body>
 
 </html>
+{% endblock %}

@@ -1,21 +1,20 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 
-{% load static %} 
+{% load static %}
 
-<html>
+{% block title %}The Gallery{% endblock %}
 
-    <head>
-        <title>The Gallery</title>
-    </head>
-
-    <body>
-        <h1>Isn't Spencer Totes Adorb?</h1>
-        Stop it Spencer.  Just Stop it!<strong>{{ boldmessage }}</strong><br />
-        <a href="/rango/about/">About</a>	<a href="/rango/contact_us/">Contact</a>	<a href="/rango/">Home</a><br />
+{% block body_block %}
+<div class="hero-unit">
+		<h1>The Gallery</h1>
+        <h2>Isn't Spencer Totes Adorb?</h2>
+        Stop it Spencer.  Just Stop it!<br />
         <img src="/media/sandwich.jpg" alt="Picture of Sandwich" /> 
         <img src="/media/snooze.jpg" alt="Picture of Snooze" /> 
         <img src="/media/yawn.jpg" alt="Picture of Yawn" /> 
         <img src="{% static "face.jpg" %}" alt="Picture of Spencer up close" /> 
+        <img src="{% static "ill.jpg" %}" alt="Picture of ill cat" />
     </body>
 
 </html>
+{% endblock %}

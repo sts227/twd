@@ -26,6 +26,7 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default.
     }
 }
+LOGIN_URL = '/rango/login/'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -140,6 +141,10 @@ STATICFILES_DIRS = (
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+SESSION_COOKIE_AGE = 1209600
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

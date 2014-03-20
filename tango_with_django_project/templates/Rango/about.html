@@ -1,24 +1,16 @@
+{% extends 'rango/base.html' %}
 
-<!DOCTYPE html>
+{% block title %}All ABOUT us{% endblock %}
 
- 
-
-<html>
-
-    <head>
-        <title>About us</title>
-    </head>
-
-    <body>
-        <h1>All About US!</h1>
-        
-        <a href="/rango/">Home</a>        <a href="/rango/contact_us/">Contact</a>		<a href="/rango/gallery/">Gallery</a><br />
-        <br />
-        <br />
-        <strong>This is a dumb Rango meme.</strong><br />
-        <img src="/media/rango_meme.jpg" alt="Picture of Rango" /><br />
-        <strong>This is a much better meme.</strong><br />
-        <img src="/media/find_meme.jpg" alt="Find meme" /> 
+{% block body_block %}
+<div class="hero-unit">
+		<h1>All ABOUT Us</h1>
+        <img src="/media/find_meme.jpg" alt="Find meme" /><br>
+       
+        <strong>My cat is my inspiration.</strong><br/>
+        You've visited the site on <strong>{{ visit_count }} occasion(s).</strong><br/>
     </body>
 
 </html>
+
+{% endblock %}

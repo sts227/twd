@@ -1,0 +1,18 @@
+{% extends 'rango/base.html' %}
+
+{% block title %}Restricted{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+	{% if user.is_authenticated %}
+		<h1>Welcome to the restricted page.  Good job being logged in.</h1>
+	{% else %}
+		<h1>This Page is Restricted</h1>
+        <img src="/media/find_meme.jpg" alt="Find meme" /><br>
+        <strong>Go ahead and Login to see this page</strong><br/>
+	{% endif %}
+    </body>
+
+</html>
+
+{% endblock %}
