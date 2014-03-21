@@ -9,7 +9,7 @@
 	   
 	     {% csrf_token %}
            
-
+{% comment%}
         {% if result_list %}
         <!-- Display search results in an ordered list -->
         <div style="clear: both;">
@@ -23,4 +23,5 @@
             </ol>
         </div>
         {% endif %}
+        {% endcomment %}
 	</ul>

@@ -109,23 +109,26 @@ def add_page(request, category_name_url):
 
 @login_required
 def auto_add_page(request):
-	context = RequestContext(request)
-	cat_id = None
-	url = None
-	title = None
-	context_dict = {'pages': pages}
-	if request.method == 'GET':
-		cat_id = request.GET['category_id']
-		url = request.GET['url']
-		title = request.GET['title']
-		if cat_id:
-			category = Category.objects.get(id=int(cat_id))
-			p = Page.objects.get_or_create(category=category, title=title, url=url)
-			pages = Page.objects.filter(category=category).order_by('-views')
+    context = RequestContext(request)
+    cat_id = None
+    url = None
+    title = None
+    context_dict = {}
+    if request.method == 'GET':
+        cat_id = request.GET['category_id']
+        url = request.GET['url']
+        title = request.GET['title']
+        if cat_id:
+            category = Category.objects.get(id=int(cat_id))
+            p = Page.objects.get_or_create(category=category, title=title, url=url)
+
+            pages = Page.objects.filter(category=category).order_by('-views')
 
             # Adds our results list to the template context under name pages.
-            
-	return render_to_response('rango/page_list.html', context_dict, context)
+            context_dict['pages'] = pages
+
+    return render_to_response('rango/page_list.html', context_dict, context)
+
 
 @login_required
 def add_category(request):
@@ -243,7 +246,7 @@ def home_page(request):
 def category(request, category_name_url):
     # Request our context from the request passed to us.
     context = RequestContext(request)
-    cat_list = get_category_list()
+    
     # Change underscores in the category name to spaces.
     # URLs don't handle spaces well, so we encode them as underscores.
     # We can then simply replace the underscores with spaces again to get the name.
@@ -252,6 +255,8 @@ def category(request, category_name_url):
     # Create a context dictionary which we can pass to the template rendering engine.
     # We start by containing the name of the category passed by the user.
     context_dict = {'category_name': category_name, 'category_name_url' : category_name_url}
+    
+    cat_list = get_category_list()
     context_dict['cat_list'] = cat_list
     
     try:
@@ -260,7 +265,6 @@ def category(request, category_name_url):
         # So the .get() method returns one model instance or raises an exception.
         category = Category.objects.get(name=category_name)
         context_dict['category'] = category
-
         # Retrieve all of the associated pages.
         # Note that filter returns >= 1 model instance.
         pages = Page.objects.filter(category=category)
@@ -273,13 +277,13 @@ def category(request, category_name_url):
         # We get here if we didn't find the specified category.
         # Don't do anything - the template displays the "no category" message for us.
         pass
-	
-	if request.method == 'POST':
-		query = request.POST.get('query')
-		if query:
-			query = query.strip()
-			result_list = run_query(query)
-			context_dict['result_list'] = result_list
+        
+    if request.method == 'POST':
+    	query = request.POST.get('query')
+    	if query:
+    		query = query.strip()
+    		result_list = run_query(query)
+    		context_dict['result_list'] = result_list
 				
     # Go render the response and return it to the client.
     return render_to_response('rango/category.html', context_dict, context)
